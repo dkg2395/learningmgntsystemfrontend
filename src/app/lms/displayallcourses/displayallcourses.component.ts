@@ -13,6 +13,11 @@ export class DisplayallcoursesComponent implements OnInit {
 
   courses:Courses[] | undefined;
 
+  course:Courses=new Courses();
+  submitted = false;
+
+  technology:string=''
+
   constructor(private coursesserviceService: CoursesserviceService,
     private router: Router) {}
 
@@ -26,7 +31,15 @@ export class DisplayallcoursesComponent implements OnInit {
     console.log(this.courses)
 
    });
-   console.log(this.courses)
+   
+  }
+
+  getByTechnology(){
+
+    this.coursesserviceService.getByTechnology(this.technology).subscribe(data=>{
+      this.courses=data
+    console.log(this.courses)
+    })
   }
 
 }
