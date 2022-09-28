@@ -1,11 +1,10 @@
-<div class="col-md-12">
-    <div class="card card-container">
-      <img
-        id="profile-img"
-        src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-        class="profile-img-card"
-      />
-      <form
+
+     
+      <div class="container">
+          <div class="row">
+              <div class="col-6">
+
+                <form
         *ngIf="!isLoggedIn"
         name="form"
         (ngSubmit)="f.form.valid && onSubmit()"
@@ -13,19 +12,19 @@
         novalidate
       >
         <div class="form-group">
-          <label for="username">Username</label>
+          <label for="username">Email</label>
           <input
             type="text"
             class="form-control"
-            name="username"
-            [(ngModel)]="form.username"
+            name="email"
+            [(ngModel)]="form.email"
             required
-            #username="ngModel"
+            #email="ngModel"
           />
           <div
             class="alert alert-danger"
             role="alert"
-            *ngIf="username.errors && f.submitted"
+            *ngIf="email.errors && f.submitted"
           >
             Username is required!
           </div>
@@ -46,16 +45,21 @@
             role="alert"
             *ngIf="password.errors && f.submitted"
           >
-            <!-- <div *ngIf="password.errors.required">Password is required</div>
-            <div *ngIf="password.errors.minlength">
+             <div *ngIf="password.errors">Password is required</div>
+           <!-- <div *ngIf="password.errors.minlength">
               Password must be at least 6 characters
             </div> -->
           </div>
         </div>
         <div class="form-group">
-          <button class="btn btn-primary btn-block">
+          <button class="btn btn-primary my-4">
             Login
           </button>
+          &nbsp;
+
+          <a class="btn btn-primary" routerLink="/register">
+            Register
+          </a>
         </div>
         <div class="form-group">
           <div
@@ -67,9 +71,14 @@
           </div>
         </div>
       </form>
+
+              </div>
+
+          </div>
+
+      </div>
   
       <div class="alert alert-success" *ngIf="isLoggedIn">
         Logged in as {{ roles }}.
       </div>
-    </div>
-  </div>
+   

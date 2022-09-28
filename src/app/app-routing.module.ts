@@ -5,10 +5,14 @@ import { LoginComponent } from './login/login.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RegisterComponent } from './register/register.component';
 
+
 const routes: Routes = [
 
-{path: '', component: DisplayallcoursesComponent},
-{path: 'login', component: LoginComponent},
+  {path: 'login', component: LoginComponent},
+  {path: '', redirectTo:'/login' , pathMatch:'full'},
+  {path: 'navbar', component: NavbarComponent},
+  {path: 'allcourses', component: DisplayallcoursesComponent},
+
 {path: 'register', component: RegisterComponent}
 
 ];
