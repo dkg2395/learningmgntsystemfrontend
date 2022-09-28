@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,6 +18,7 @@ import { LoginComponent } from './login/login.component';
     NavbarComponent,
     RegisterComponent,
     LoginComponent,
+    
    
   ],
   imports: [

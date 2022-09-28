@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Message } from '../Model/Message';
 import { AuthServiceService } from '../service/auth-service.service';
 
 @Component({
@@ -13,11 +15,12 @@ export class RegisterComponent implements OnInit {
     email: null,
     password: null
   };
+  message:Message=new Message()
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
 
-  constructor(private authService: AuthServiceService) { }
+  constructor(private authService: AuthServiceService,private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -30,6 +33,8 @@ export class RegisterComponent implements OnInit {
         console.log(data);
         this.isSuccessful = true;
         this.isSignUpFailed = false;
+        this.router.navigate(['/login']);
+       
       },
       err => {
         this.errorMessage = err.error.message;
@@ -37,4 +42,7 @@ export class RegisterComponent implements OnInit {
       }
     );
   }
+
+ 
+ 
 }
