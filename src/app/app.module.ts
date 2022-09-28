@@ -7,12 +7,16 @@ import { DisplayallcoursesComponent } from './lms/displayallcourses/displayallco
 import { NavbarComponent } from './navbar/navbar.component';
 import {HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DisplayallcoursesComponent,
     NavbarComponent,
+    RegisterComponent,
+    LoginComponent,
    
   ],
   imports: [
