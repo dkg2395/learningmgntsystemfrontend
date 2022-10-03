@@ -17,8 +17,8 @@ export class DisplayallcoursesComponent implements OnInit {
   submitted = false;
 
   technology:string=''
-  pageNo:number=0;
-  pageSize:number =2;
+  pageNo:number=1;
+  pageSize:number =3;
 
   constructor(private coursesserviceService: CoursesserviceService,
     private router: Router) {}
@@ -38,16 +38,16 @@ export class DisplayallcoursesComponent implements OnInit {
   // }
 
   Getpagination(){
-    this.pageNo=this.pageNo+1
+    
     this.coursesserviceService.pagination(this.pageNo,this.pageSize).subscribe(data=>{
       this.courses=data
-      
+      this.pageNo=this.pageNo+1>0?this.pageNo+1:this.pageNo
     console.log(this.courses)
     })
   }
 
   DecrementPageNo(){
-    this.pageNo=this.pageNo-1
+    this.pageNo=this.pageNo-1>0?this.pageNo-1:1
     this.coursesserviceService.pagination(this.pageNo,this.pageSize).subscribe(data=>{
       this.courses=data
      
