@@ -17,29 +17,52 @@ export class DisplayallcoursesComponent implements OnInit {
   submitted = false;
 
   technology:string=''
+  pageNo:number=0;
+  pageSize:number =2;
 
   constructor(private coursesserviceService: CoursesserviceService,
     private router: Router) {}
 
   ngOnInit(): void {
-    this.getAllCourseData()
+    //this.getAllCourseData()
+    this.Getpagination()
   }
 
-  getAllCourseData(){
-  this.coursesserviceService.getAllCourse().subscribe(data=>{
-    this.courses=data
-    console.log(this.courses)
+  // getAllCourseData(){
+  // this.coursesserviceService.getAllCourse().subscribe(data=>{
+  //   this.courses=data
+  //   console.log(this.courses)
 
-   });
+  //  });
    
-  }
+  // }
 
-  getByTechnology(){
-
-    this.coursesserviceService.getByTechnology(this.technology).subscribe(data=>{
+  Getpagination(){
+    this.pageNo=this.pageNo+1
+    this.coursesserviceService.pagination(this.pageNo,this.pageSize).subscribe(data=>{
       this.courses=data
+      
     console.log(this.courses)
     })
   }
+
+  DecrementPageNo(){
+    this.pageNo=this.pageNo-1
+    this.coursesserviceService.pagination(this.pageNo,this.pageSize).subscribe(data=>{
+      this.courses=data
+     
+    console.log(this.courses)
+    })
+  }
+
+
+  getByTechnology(){
+    this.coursesserviceService.getByTechnology(this.technology).subscribe(data=>{
+      this.courses=data
+    console.log(this.courses)
+
+  })
+}
+
 
 }

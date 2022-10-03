@@ -21,4 +21,9 @@ export class CoursesserviceService {
     return this.http.get<Courses[]>(`http://localhost:8070/api/v1.0/lms/courses/info/${technology}`);
 
   }
+  pagination(pageNo:number,pageSize:number):Observable<Courses[]>{
+
+    return this.http.get<Courses[]>(`http://localhost:8070/api/v1.0/lms/courses/pagereq?pageNo=${pageNo}&pageSize=${pageSize}`);
+
+  }
 }
